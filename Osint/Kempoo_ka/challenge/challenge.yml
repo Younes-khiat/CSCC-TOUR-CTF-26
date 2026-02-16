@@ -1,0 +1,6 @@
+name: "Kempoo_ka"
+author: "Houddini"
+category: "Osint"
+description: |
+ "Kempo is a martial arts sport, and it hasn't been a long time since it has entered to algeria (early 19s) the person who bringed it here has past away just a few years ago "rbi yerhmoo", your mission is to find his name, flag format CSCC{first-name:last-name} Example: CSCC{Jamel:Bouzan}"
+value: 500

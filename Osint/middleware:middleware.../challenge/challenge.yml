@@ -1,0 +1,6 @@
+name: "middleware:middleware..."
+author: "Houddini"
+category: "Osint"
+description: |
+ "A high-severity CVE affecting Next.js made global headlines in early 2025 when disclosed by an Algerian security researcher. The researcher credited a collaborator for their joint work in identifying this vulnerability. Find the names of both researchers. Flag Format: CSCC{FirstName1:LastName1-FirstName2:LastName2} "
+value: 500

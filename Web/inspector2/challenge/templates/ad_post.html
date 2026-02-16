@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Post - DOM XSS CTF</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+        
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .dev-notice {
+            background: #fff3cd;
+            color: #856404;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #ffeaa7;
+            margin: 20px 0;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .user-info {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .nav a, .nav button {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 14px;
+        }
+        
+        .nav a:hover, .nav button:hover {
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="icon">🚧</div>
+            <h1>Add Post</h1>
+            {% if username %}
+            <div class="user-info">Logged in as: <strong>{{ username | escape }}</strong></div>
+            {% endif %}
+            <div class="nav">
+                <a href="/app">App</a>
+                <a href="/admin">Admin</a>
+                <a href="/logout">Logout</a>
+            </div>
+            <div class="dev-notice">
+                This functionality stills under dev
+            </div>
+            <a href="/app" class="back-btn">Back to App</a>
+        </div>
+    </div>
+</body>
+</html>
