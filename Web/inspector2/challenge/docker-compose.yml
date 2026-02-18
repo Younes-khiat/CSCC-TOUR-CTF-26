@@ -1,8 +1,10 @@
+name: inspector2
+
 services:
   web:
     build: .
     ports:
-      - "5000:5000"
+      - "5000:80"
     environment:
       - FLASK_ENV=development
       - SECRET_KEY=9c7c59e8c4c446e2b79e3d6b7b0c3f9c5b8f25d8c1a7d4f3a2b1c9d8e7f6a5b4

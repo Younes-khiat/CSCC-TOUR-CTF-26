@@ -1,6 +1,8 @@
+name: inspector1
+
 services:
   web:
     build: .
     ports:
-      - "8080:80"
+      - "5001:80"
     restart: always

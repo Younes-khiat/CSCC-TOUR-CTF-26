@@ -1,0 +1,8 @@
+name: lflf
+
+services:
+  lflf:
+    build: .
+    ports:
+      - "5002:80"
+    restart: unless-stopped
