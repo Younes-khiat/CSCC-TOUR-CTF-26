@@ -1,0 +1,8 @@
+name: Manager
+author: Sx1im
+category: Web
+description: 
+  Just a simple file manager, what can go wrong?
+
+difficulty: medium
+flag: CSCC{tru5t_us3r_1nput_4nd_g3t_1nj3ct3d}

@@ -1,0 +1,9 @@
+name: Rolling
+author: Sx1im
+category: Crypto
+description: 
+  Keeep Rooolllling
+
+difficulty: easy
+flag: CSCC{7h3y_s33_m3_r0ll1ng_blob}
+files: cipher.txt

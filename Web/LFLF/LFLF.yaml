@@ -1,0 +1,8 @@
+name: LFLF
+author: Sx1im
+category: Web
+description: 
+  The flag is hidden somewhere in the system files. Can you find it?
+
+difficulty: easy
+flag: CSCC{l0c4l_f1l3_3xplos10n}
