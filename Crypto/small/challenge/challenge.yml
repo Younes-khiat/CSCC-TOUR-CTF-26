@@ -1,0 +1,13 @@
+title: Small
+author: C0ff33 
+category: crypto
+type: RSA Attack
+
+description: |
+  You have intercepted an RSA-encrypted message and its public key.
+  Can you decrypt the message and find the flag?
+
+
+files:
+  - outputs.txt  
+  - encoding.py ( brk without flag)

@@ -1,0 +1,30 @@
+:
+  parts:
+    part1:
+      raw: "pfpp{Pelc10_"
+      decode:
+        - type: "rot13"
+          result: "cscc{Cryp10_"
+
+    part2:
+      raw: "VFZSV1psWnFUbmxsVVQwOQ=="
+      decode:
+        - type: "base64"
+          result: "TVRWZlZqTnllUT09"
+        - type: "base64"
+          result: "MTVfVjNyeQ=="
+        - type: "base64"
+          result: "15_V3ry"
+
+    part3:
+      raw: "\\x5a\\x6c\\x56\\x75\\x58\\x30\\x59\\x77\\x63\\x6c\\x39\\x49\\x4e\\x47\\x4e\\x72\\x4d\\x33\\x49\\x6b\\x4a\\x48\\x30\\x3d"
+      decode:
+        - type: "hex-escaped-bytes -> ascii"
+          result: "ZlVuX0Ywcl9INGNrM3IkJH0="
+        - type: "base64"
+          result: "fUn_F0r_H4ck3r$$}"
+
+  assembly:
+    method: "concat(part1_decoded + part2_decoded + part3_decoded)"
+    flag_strict_concat: "cscc{Cryp10_15_V3ryfUn_F0r_H4ck3r$$}"
+    flag_with_separator_hint: "cscc{Cryp10_15_V3ry_fUn_F0r_H4ck3r$$}"

@@ -1,0 +1,10 @@
+name: Warmup
+author: ""
+category: Crypto
+description: >
+  Ce challenge est composé de trois parties encodées différemment.
+  Chaque partie doit être décodée ,
+  puis assemblée pour reconstituer le flag.
+
+difficulty: easy
+flag: "cscc{Cryp10_15_V3ry_fUn_F0r_H4ck3r$$}"
