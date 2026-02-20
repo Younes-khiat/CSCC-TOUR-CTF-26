@@ -9,7 +9,7 @@
 > - The key is **different**
 > - The encryption algorithm is **different**
 >
-> ![IDA Decompilation](./Screenshot_1.png)
+> ![IDA Decompilation](./solution/Screenshot_1.png)
 >
 > ###### Let's inspect the encryption function.
 
