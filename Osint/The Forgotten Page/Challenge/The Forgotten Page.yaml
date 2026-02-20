@@ -1,0 +1,8 @@
+name: The Forgotten Page
+author: Felouja
+category: OSINT
+description: 
+  During a visit to an old library, I came across an ancient book hidden between dusty shelves. One page caught my attention, so I took a photo… but I didn't write down the title. Now, all I have left is that image. Your mission is to find the exact name of the book from this page.
+
+difficulty: medium
+flag: CSCC{leningrad_guide_du_touriste}

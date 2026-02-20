@@ -1,0 +1,8 @@
+name: Silent Pixels
+author: Felouja
+category: Forensics
+description: 
+  This image is not what it seems — its secret is hidden beyond normal inspection. Only precise visual analysis will reveal what automated methods fail to see.
+
+difficulty: easy
+flag: CSCC{zre@9_wla_7m&r!}

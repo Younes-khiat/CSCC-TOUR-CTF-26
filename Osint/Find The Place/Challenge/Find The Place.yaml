@@ -1,0 +1,8 @@
+name: Find The Place
+author: Felouja
+category: OSINT
+description: 
+  I recently visited a public location and took a photo at a well-known spot there. Using only the image, determine the exact location where the photo was taken.
+
+difficulty: easy
+flag: CSCC{36.67_4.52}

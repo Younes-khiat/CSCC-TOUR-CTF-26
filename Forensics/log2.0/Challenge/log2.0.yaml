@@ -1,0 +1,8 @@
+name: log2.0
+author: Felouja
+category: Forensics
+description: 
+  After an abnormal spike in network activity, security analysts recovered multiple log files filled with automated scans and anonymous connections; your task is to trace back the real attacker and their source IP hidden among the noise to submit CSCC{attacker_name_attacker_ip}.
+
+difficulty: medium
+flag: CSCC{anonymos_185.199.109.153}

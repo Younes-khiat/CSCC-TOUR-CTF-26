@@ -1,0 +1,8 @@
+name: p6ac4et
+author: Felouja
+category: Forensics
+description: 
+  Amidst a sea of packets and overwhelming data, something important hides in an indirect way. Not all packets are obvious; sometimes, only paying attention to the names being sent reveals the hidden message. Collecting the correct pieces and arranging them carefully is the only way to uncover the truth.
+
+difficulty: easy
+flag: CSCC{f3l0uj4_chk0n_dns}
