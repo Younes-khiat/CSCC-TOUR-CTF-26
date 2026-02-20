@@ -1,0 +1,5 @@
+After an abnormal spike in network activity, security analysts recovered multiple log files filled with automated scans and anonymous connections; your task is to trace back the real attacker and their source IP hidden among the noise to submit .
+CSCC{attacker_name_attacker_ip}.
+
+
+Author:felouja
