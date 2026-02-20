@@ -13,12 +13,12 @@
 >
 > ###### We can also use **DIE (Detect It Easy)** which has a graphical interface and can reveal advanced information like crypting and packing:
 >
-> ![DIE Analysis](https://raw.githubusercontent.com/Younes-khiat/CSCC-TOUR-CTF-26/main/Reverse/XOR Me Maybe/solution/Screenshot_1.png)
+> ![DIE Analysis](Screenshot_1.PNG)
 
 ### Step2 (Decompiling with IDA):
 > ###### We open the binary in **IDA** to decompile it:
 >
-> ![IDA Decompilation](Screenshot_2.png)
+> ![IDA Decompilation](Screenshot_2.PNG)
 >
 > ###### The decompiled code is easy and readable. Let's break it down line by line:
 > - It copies `"secret"` to `s` → `char s[] = "secret"`
@@ -31,11 +31,11 @@
 ### Step3 (Inspecting xor_encrypt):
 > ###### Let's inspect the `xor_encrypt` function:
 >
-> ![xor_encrypt raw](Screenshot_3.png)
+> ![xor_encrypt raw](Screenshot_3.PNG)
 >
 > ###### We can rename the parameters to make it more readable:
 >
-> ![xor_encrypt renamed](Screenshot_4.png)
+> ![xor_encrypt renamed](Screenshot_4.PNG)
 >
 > ###### The function XORs user input with the word `"secret"`. In XOR, when the key is smaller than the input, we repeat the key to match the length (using modulo `%`).
 > ###### After XOR, it uses `memcmp` to compare the result against a hex blob — then displays if it matches or not.
@@ -43,11 +43,11 @@
 ### Step4 (Breaking the encryption):
 > ###### Since XOR is reversible (`A ^ B ^ B = A`), we just need to XOR the hex blob back with the key `"secret"` to recover the original password:
 >
-> ![XOR explanation](Screenshot_5.png)
+> ![XOR explanation](Screenshot_5.PNG)
 >
 > ###### To get the hex blob from IDA, we set a breakpoint on the `memcmp` call and inspect `s2` in the hex view:
 >
-> ![Hex view in IDA](Screenshot_6.png)
+> ![Hex view in IDA](Screenshot_6.PNG)
 >
 > ###### We copy the bytes:
 > ```

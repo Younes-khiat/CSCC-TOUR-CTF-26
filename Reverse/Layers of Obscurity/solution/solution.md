@@ -8,14 +8,14 @@
 > - The key is **different**
 > - The encryption algorithm is **different**
 >
-> ![IDA Decompilation](./solution/Screenshot_1.png)
+> ![IDA Decompilation](Screenshot_1.PNG)
 >
 > ###### Let's inspect the encryption function.
 
 ### Step2 (Understanding the encryption algorithm):
 > ###### The custom encryption function has **3 for loops**:
 >
-> ![Encryption function](Screenshot_2.png)
+> ![Encryption function](Screenshot_2.PNG)
 >
 > ###### **Loop 1 — Reverse the array** (loops only halfway):
 > ```
