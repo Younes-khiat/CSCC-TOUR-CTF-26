@@ -1,0 +1,15 @@
+name: "XOR Me Maybe"
+author: "Malek"
+category: "reverse"
+description: |
+  A simple binary asks for a password and applies a transformation before checking it.
+  The program uses a repeating key to modify your input and compares it against
+  a predefined byte array.
+
+  No optimization and no stripping were applied during compilation.
+
+  Can you recover the correct password?
+hints:
+  - "Look carefully at how the input is transformed."
+  - "XOR is its own inverse."
+value: 200

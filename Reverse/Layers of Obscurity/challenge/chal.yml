@@ -1,0 +1,16 @@
+name: "Layers of Obscurity"
+author: "Malek"
+category: "reverse"
+description: |
+  This binary performs multiple transformations on your input before validating it.
+  The operations include byte reversal, XOR with a repeating key,
+  and swapping adjacent byte pairs.
+
+  The binary was compiled without optimization and without stripping symbols.
+
+  Can you undo all layers and recover the correct password?
+hints:
+  - "Follow the transformations step by step."
+  - "Each operation can be reversed."
+  - "Obscurity alone is not security."
+value: 300
