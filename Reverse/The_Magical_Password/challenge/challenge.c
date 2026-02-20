@@ -30,6 +30,7 @@ void normal_function() {
 }
 
 int main() {
+    setbuf(stdout, NULL);
     char password[50];
 
     printf("Welcome to the challenge!\n");
