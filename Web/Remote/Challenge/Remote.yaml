@@ -1,0 +1,8 @@
+name: Remote
+author: Sx1im
+category: Web
+description: 
+  You think you won when you got LFI last time? goodluck now.
+
+difficulty: medium
+flag: CSCC{Fr0m_l0c4l_t0_r3m0t3!} 

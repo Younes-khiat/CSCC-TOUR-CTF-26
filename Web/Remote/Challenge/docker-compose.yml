@@ -1,0 +1,8 @@
+name: remote
+
+services:
+  remote:
+    build: .
+    ports:
+      - "5004:80"
+    restart: unless-stopped
