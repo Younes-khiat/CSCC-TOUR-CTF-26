@@ -1,0 +1,10 @@
+name: "The Magical Password "
+author: "c0ff33"
+category: "reverse"
+description: |
+ "Welcome to the Magical Password Challenge!
+  In this challenge, you will encounter a program that contains a special function revealing a secret flag, 
+  but only if the correct password is provided."
+hints:
+  - "Just read the source code"
+value: 300

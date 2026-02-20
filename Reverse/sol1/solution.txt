@@ -1,0 +1,109 @@
+first thing first we we seen a binary file we need to know what type of file we are dealing with 
+is it for windows is it for linux is it 64 is it 32 ...
+
+in linux we can use file commend to reveleas basic information
+└─$ file chal1
+chal1: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=aec1d856a074b5bb1b766929f3ef23b73eff8901, for GNU/Linux 3.2.0, not stripped
+
+we can se here that is ELF(executable format for linux systems) and its 64bit, the last one called
+architecture and it helps us understand how argument are passed syscalled are used(itse must to 
+check whe ndealing with assembly ir assembly and gdb or any debugger)
+the other thing we can see that its not striped which is really cool thing that keep deveolper things
+inside the binary like variable name and size(if devoper named variable char flag[32] we still can 
+see  that but if its striped decomiler will try to generate name for them like lvar565 and the size
+will mostly wronge)
+
+we can use another tool named DIE(detect-it-easy) whcih exist on both windows and linux
+this one have graphical interface and can reveleas some advnaced information like crypting and packing
+
+[Screenshot_1.png]
+
+now lets dive deeper using ida
+
+[Screenshot_2.png]
+
+we can see that the decompilation code is easy and readable and lets start line by line
+first it copies "secret" to s meaning char S[]= "secret"
+
+the v9 contains the lenght s          int v9 = strlen(S)// in this case can can calculates it by
+our selves and find thet "secret" contains 6 char
+
+later on it print to inform user to enter input then it scans it and store it in s1 
+                                      char s1[] = scanf // user input
+
+then it remove the new light from the end of the input string s1
+
+then it calculates the lenght of user input int v8 = strlen(s1)
+
+later on we find intersting part it calls xor encrypt function and pass it
+s1,v8,s2,v9 in other words input, input_len, secret, secret_lenght (6)
+
+lets inspect the function xor_encrypt
+
+[Screenshot_3.png]
+
+as we saw befor teh first argument is secret string (a1 here), second is hex_blob(a2 here)
+and 3rd is secret_lenght(a3 here)
+we can rename them to make it more readble 
+
+[Screenshot_4.png]
+
+looking at this function we see that its xor user iput with wthe the word "secret"
+in xor when key is smaller then input we repeat the key so we kan match the lenght 
+
+later on it uses memcopy to compare between blob of text and xored input then display if it match or no
+
+now since we understand the flow of the programe lets break it:
+
+[Screenshot_5.png]
+
+as we see in the image since the "key" is way smaller then the text "longencryptedtext" we are
+repeating it all over and thats why we are using the module "%"
+
+and the image also displays how we can get back the original password which we can do by 
+just xoring the blobhex (S1) with the key("secret") 
+
+to get the blob of hex from ida we set breakpoint on memcopy commned and then click on s2
+
+[Screenshot_6.png]
+
+we copy the byts from the hexview and we get 
+
+30 36 20 31 1E 1E 06 16  17 2D 1D 1B 01 3A 0A 06
+3A 16 12 06 08 0F 00 00  00 00 00 00 00 00 00 00
+
+then we can use any language we wants to creat scipt that xor with repeated key hex vector and string
+for my preferance i will use C
+
+#include <stdio.h>
+#include <string.h>
+
+void xor_encrypt(char *buf, int len,char *key, int keylen) {
+    
+    for(int i = 0; i < len; i++) {
+        buf[i] ^= key[i % keylen];
+    }
+}
+
+void main(){
+
+       char target[] = {
+        0x30, 0x36, 0x20, 0x31, 0x1E, 0x1E, 0x06, 0x16,
+        0x17, 0x2D, 0x1D, 0x1B, 0x01, 0x3A, 0x0A, 0x06,
+        0x3A, 0x16, 0x12, 0x06, 0x08, 0x0F, 0x00, 0x00,
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+    };
+
+    char key[] = "secret";
+    
+    int keylen = strlen(key);
+    int buflen = sizeof(target);
+    
+    xor_encrypt(target, buflen, key, keylen);
+    
+    printf("Flag: %s\n", target);
+}
+
+
+runiong it we get Flag: CSCC{just_xor_it_back}etsecretse 
+the bytes after "}" are just because we copied from hex view more then we needed

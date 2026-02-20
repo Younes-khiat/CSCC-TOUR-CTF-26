@@ -1,0 +1,71 @@
+its better to read the previous write it since this chllenge considred as extention of the previosu chllenge
+
+[Screenshot_1.png]
+
+its looks very fimilyar exect that we are noticing that the hex blob is differant
+key is differant
+and the encryption algorithm is differant
+so lets check the encryption algorithm first
+
+[Screenshot_2.png]
+
+we see here that there is 3 for loops so we start by each one
+
+notation: in C foo[5] is the same as *(foo + 5) or *(5 + foo)
+
+the first one 
+    it store in v5 = input[i]
+    then input[i] = input[ input_len - 1 -i ]
+    then input[ input_len - 1 -i ] = v5
+    
+    and only loop halfway
+
+    so basicly its swaping list items, (spawn first with the last, then second with the item befor last ...)
+    list befor = 1 2 3 4 5 6
+    list after = 6 5 4 3 2 1
+
+the second one
+    its xor with repeated key as the previous challnge
+
+the third one
+    it loop from k = 0 to k = input_len and incriment by 2 each time
+    it store v6 = input[k]
+    then input[k] = input[k + 1]
+    then input[k + 1] = v6
+
+    this one is swaping first element with second then 3rd with 4th then 5th with 6Th ...
+    list befor = 1 2 3 4 5 6
+    list after = 2 1 4 3 5 5 
+
+after this costum encryptio nfunction ends it compare with the blob hex and check then print if correct or notation
+
+
+the way to break this is to reverse each step, we notice here that each step can be reversed by
+applying the same function again
+
+since we build the functions again we have to call them in reverse order loop3 -> loop2 -> loop1
+
+
+void decrypt(char *buf, int len, char *key, int keylen) {
+    // 1 Undo swap pairs
+    for(int i = 0; i < len - 1; i += 2) {
+        char tmp = buf[i];
+        buf[i] = buf[i + 1];
+        buf[i + 1] = tmp;
+    }
+
+    // 2 Undo xor
+    for(int i = 0; i < len; i++) {
+        buf[i] ^= key[i % keylen];
+    }
+
+    // 3 Undo reverse bytes
+    for(int i = 0; i < len / 2; i++) {
+        char tmp = buf[i];
+        buf[i] = buf[len - 1 - i];
+        buf[len - 1 - i] = tmp;
+    }
+}
+
+we extart the blob of hex the same way and we notice that the key used in this challnge is 
+just "terces" so we call the function and we get flag: CSCC{obscurity_is_not_real_security}

@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  challenge:
+    build: .
+    container_name: challenge
+    ports:
+      - "4445:4445"  # Host 4445 -> container 4445
