@@ -14,7 +14,7 @@
 >
 > ###### We can also use **DIE (Detect It Easy)** which has a graphical interface and can reveal advanced information like crypting and packing:
 >
-> ![DIE Analysis](Screenshot_1.png)
+> ![DIE Analysis](https://github.com/Younes-khiat/CSCC-TOUR-CTF-26/blob/main/Reverse/XOR%20Me%20Maybe/solution/Screenshot_1.png)
 
 ### Step2 (Decompiling with IDA):
 > ###### We open the binary in **IDA** to decompile it:
