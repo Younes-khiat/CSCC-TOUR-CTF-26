@@ -1,4 +1,3 @@
-````markdown
 # Challenge 2 (Custom Encryption Reverse)
 
 > **Note:** It's recommended to read the Challenge 1 writeup first since this challenge is an extension of it.
@@ -78,4 +77,3 @@
 ```
 CSCC{obscurity_is_not_real_security}
 ```
-````

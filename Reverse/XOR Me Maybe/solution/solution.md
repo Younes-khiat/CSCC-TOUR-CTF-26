@@ -1,4 +1,3 @@
-````markdown
 # Challenge 1 (XOR Reverse Engineering)
 
 ### Step1 (Identifying the binary):
@@ -88,4 +87,3 @@
 ```
 CSCC{just_xor_it_back}
 ```
-````
