@@ -1,0 +1,21 @@
+name: "Vibe Coder's AES"
+author: "Malek"
+category: "reverse"
+description: |
+  The vibe coder made a critical bug in his code. Can you find it?
+
+  This is a Windows GUI application protected by AES encryption.
+  The program asks for a password, derives an AES-128 key from it,
+  and decrypts a fixed ciphertext to verify correctness.
+
+  All visible strings are obfuscated at compile time, and the binary
+  was built without optimization and without stripping symbols.
+
+  The focus is on analyzing the key generation logic.
+
+  Identify the flaw and recover the flag.
+hints:
+  - "Look closely at how the AES key buffer is filled."
+  - "What happens to the remaining bytes of the key?"
+  - "You might not need to reverse the entire AES routine."
+value: 400

@@ -1,0 +1,58 @@
+using file commend or "die" tool we can see that its windows file 
+└─$ file chal3.exe
+chal3.exe: PE32 executable for MS Windows 4.00 (GUI), Intel i386, 15 sections
+
+we need to use wine to run it or to have windows system
+
+first thing we do we run it and we see that it have GUI that prompte us to type password then check 
+
+
+when using ida as decompiling we see alot of generated code that is not related to GUI 
+its like template code thate is added on every app that have  GUI so by time you will
+memorizes the exact location of the user code
+
+first go to the buttom until you find return WinMain(ModuleHandleA, 0, CommandLineA, wShowWindow);
+click on WinMain , in this page you will find related information to the windows tab it self(
+icon, title colors .... and some gui template,   they are not intersting)
+
+[Screenshot_1.png]
+
+then go to WndClass.lpfnWndProc = WndProc; and click on WndProc
+
+here you find the user code 
+
+[Screenshot_2.png]
+
+here it handles user interaction with buttons(close windows button, and other existing buttons)
+text if they are, keyboard buttons , and any other type of interaction can the user do
+when we run the app we see text area and check button
+
+case 1u → WM_CREATE This message is sent when the window is being created. (not intersting)
+case 2u → WM_DESTROY This message is sent when the window is closing. (not intersting)
+
+case 0x111u: // this wehere the check button handled
+      if ( (_WORD)wParam == 1 )
+        check_password(hWndParent);             lets dive deeper here
+      break;                                    
+
+[Screenshot_3.png]
+
+first it set string with full of zeroes then it reads from the text bar the input of user
+then it set the string character to lower, meanign typing test and TEST will give the same result later
+then it calculate its lenght, if it > 16 then it uses only the first 16 character
+it copy the new calculated size to v16
+
+then we see crusial part : 
+    for ( j = 1; j <= 15; ++j )
+        v16[j] = v16[0];
+
+its overide the input with the first charcter dublicated
+if the input cas CSCC then the outpuet will be CCC... (16 times)
+and then it uses the new key to decryprt some blob of hex 
+
+by analysing what we saw we know that the only first chracter of the inpute is what count the
+rest will be discared and since every uppercase char will be lower we even have smaller possiblities
+to test which they are: abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?/~`\"'
+
+since they are few we test one by one and when we reach the letter t we get the flag
+flag: CSCC{brut3_f0rc3_th3_k3y_byt3}
